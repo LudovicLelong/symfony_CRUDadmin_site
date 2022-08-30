@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gérer les biens!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+
+{% include('./layout/header_index.html.twig') %}
+
+{% block body %}
+
+
+    <div class="flex flex-wrap flex-row my-10 justify-center">
+        <h1>Gérer les biens</h1>
+
+
+                <tbody>
+                {% for repo in properties %}
+                    <div class="p-3">
+                        <div class="bg-gray-700 w-64 h-80 rounded-t-lg flex flex-col items-center">
+                            <div>
+
+                                <p class="text-white mt-3">{{ repo.title }}</p>
+
+                            </div>
+                            <div>
+
+
+                                <button class="bg-blue-600 rounded"><a href="{{ path('admin.property.edit', {id: repo.id}) }}" class="">Editer ✨</a></button>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </tbody>
+
+
+    </div>
+
+
+
+{% endblock %}
+</body>
+</html>
